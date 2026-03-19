@@ -4,7 +4,7 @@
 	{
 		public const string APPLICATION = "Application";
 
-		public const string INFRAESTRUCTURE = "Infraestructure";
+		public const string INFRASTRUCTURE = "Infrastructure";
 
 		public const string DOMAIN = "Domain";
 	}

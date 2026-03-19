@@ -1,0 +1,1 @@
+public async IReadOnlyList<{{Entity}}> GetAllAsync() { }

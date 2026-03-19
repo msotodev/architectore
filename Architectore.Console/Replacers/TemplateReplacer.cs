@@ -8,13 +8,34 @@ namespace Architectore.Cli.Replacers
 
 		private const string NAMESPACE = "Namespace";
 
-		public static async Task<byte[]> Replace(string filePath, string entity, string nameSpace)
+		private const string CONTRACTS = "Contracts";
+
+		private const string IMPLEMENTATIONS = "Implementations";
+
+		public static async Task<byte[]> ReplaceAsync(
+			string text, string entity, string nameSpace, string contracts, string implementations
+		)
 		{
-			string text = await File.ReadAllTextAsync(filePath);
+			try
+			{
+				string replaced = text.Replace(
+					"{{" + ENTITY + "}}", entity
+				).Replace(
+					"{{" + NAMESPACE + "}}", nameSpace
+				).Replace(
+					"{{" + CONTRACTS + "}}", contracts.Replace("{{" + ENTITY + "}}", entity)
+				).Replace(
+					"{{" + IMPLEMENTATIONS + "}}", implementations.Replace("{{" + ENTITY + "}}", entity)
+				);
 
-			string replaced = text.Replace("{{" + ENTITY + "}}", entity).Replace("{{" + NAMESPACE + "}}", nameSpace);
+				return Encoding.UTF8.GetBytes(replaced);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine($"Exception {nameof(TemplateReplacer)}: {e.Message}");
 
-			return Encoding.UTF8.GetBytes(replaced);
+				return [];
+			}
 		}
 	}
 }

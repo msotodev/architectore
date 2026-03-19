@@ -1,4 +1,5 @@
 ﻿using Architectore.Cli.Builders;
+using EssentialLayers.Helpers.Extension;
 using System.CommandLine;
 
 namespace Architectore.Cli
@@ -7,26 +8,26 @@ namespace Architectore.Cli
 	{
 		public static async Task Main(string[] args)
 		{
-			var pathOption = new Option<string>("--path", "Ruta base del proyecto")
+			Option<string> pathOption = new("--path", "Project path")
 			{
 				IsRequired = true
 			};
 
-			var nameSpaceOption = new Option<string>("--namespace", "Espacio de nombre del proyecto")
+			Option<string> nameSpaceOption = new("--namespace", "Project namespace")
 			{
 				IsRequired = true
 			};
 
-			var entityOption = new Option<string>(
-				name: "--entity",
-				description: "Nombre de la entidad"
-			);
+			Option<string> entityOption = new("--entity", "Entity name")
+			{
+				IsRequired = true
+			};
 
-			var repoOption = new Option<bool>("--repo", "Generar repositorios");
-			var serviceOption = new Option<bool>("--service", "Generar servicios");
-			var queryOption = new Option<bool>("--query", "Generar queries");
+			Option<string> repoOption = new("--repo", $"Generate repository (Delete,New,Update)");
+			Option<string> serviceOption = new("--service", $"Generate service (Delete,New,Update)");
+			Option<string> queryOption = new("--query", $"Generate query (GetAll,GetById)");
 
-			var command = new Command("generate", "Genera código basado en entidades");
+			Command command = new("g", "Generate code based in entity");
 
 			command.AddOption(pathOption);
 			command.AddOption(nameSpaceOption);
@@ -35,33 +36,22 @@ namespace Architectore.Cli
 			command.AddOption(serviceOption);
 			command.AddOption(queryOption);
 
-			command.SetHandler(async (string path, string nameSpace, string entity, bool repo, bool service, bool query) =>
+			command.SetHandler(async (string path, string nameSpace, string entity, string repo, string service, string query) =>
 			{
-				Console.WriteLine($"🚀 Generando para {entity}...");
+				Console.WriteLine($"🚀 Generating to {entity}...");
 
-				if (repo)
-					await RepositoryBuilder.BuildAsync(
-						path,
-						entity
-					);
+				if (repo.NotEmpty()) await RepositoryBuilder.BuildAsync(path, entity, repo);
 
-				if (service)
-					await ServiceBuilder.BuildAsync(
-						path,
-						entity
-					);
+				if (service.NotEmpty()) await ServiceBuilder.BuildAsync(path, entity, service);
 
-				if (query)
-					await QueryBuilder.BuildAsync(
-						path,
-						entity
-					);
+				if (query.NotEmpty()) await QueryBuilder.BuildAsync(path, entity, query);
 
-				Console.WriteLine("✅ Finalizado");
+				Console.WriteLine("✅ Finalized");
 
 			}, pathOption, nameSpaceOption, entityOption, repoOption, serviceOption, queryOption);
 
-			var root = new RootCommand("Architectore CLI");
+			RootCommand root = new("Architectore CLI");
+
 			root.AddCommand(command);
 
 			await root.InvokeAsync(args);

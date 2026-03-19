@@ -15,8 +15,8 @@
 			return files;
 		}
 
-		public static bool IsAnInterface(string name) => Path.GetFileNameWithoutExtension(name).StartsWith(I);
+		public static bool IsAnInterface(string templatePath) => Path.GetFileNameWithoutExtension(templatePath).StartsWith(I);
 
-		public static string GetFileName(string template, string entity, string type) => $"{(IsAnInterface(template) ? I : string.Empty)}{entity}{type}.cs";
+		public static string StartWith(string templatePath) => IsAnInterface(templatePath) ? I : string.Empty;
 	}
 }

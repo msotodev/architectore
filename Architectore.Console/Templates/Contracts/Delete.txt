@@ -1,0 +1,1 @@
+Task<ResultHelper<{{Entity}}>> DeleteAsync({{Entity}} entity);

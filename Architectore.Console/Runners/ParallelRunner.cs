@@ -12,13 +12,17 @@ namespace Architectore.Cli.Runners
 
 				return Response.Success();
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 				IEnumerable<Exception> exceptions = tasks.Where(
 					t => t.IsFaulted
 				).SelectMany(t => t.Exception!.InnerExceptions);
 
-				return Response.Fail(string.Join("\n", exceptions.Select(e => e.Message)));
+				string messages = string.Join("\n", exceptions.Select(e => e.Message));
+
+				Console.WriteLine($"Exception {nameof(ParallelRunner)}: {e.Message}");
+
+				return Response.Fail(messages);
 			}
 		}
 	}

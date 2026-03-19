@@ -9,12 +9,12 @@
 		<PackAsTool>true</PackAsTool>
 		<ToolCommandName>arch</ToolCommandName>
 		<PackageId>Architectore.CleanArchitecture</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.1.0</Version>
 		<Authors>Mario Soto Moreno</Authors>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Executors\" />
+		<Folder Include="Templates\Implementations\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -23,6 +23,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="Templates\Contracts\GetAll.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Contracts\GetById.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Contracts\New.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Contracts\Update.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Implementations\Delete.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Implementations\GetAll.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Implementations\GetById.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Implementations\New.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Templates\Implementations\Update.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Update="Templates\Queries\IQuery.txt">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>

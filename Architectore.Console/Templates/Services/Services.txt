@@ -2,6 +2,19 @@ namespace {{Namespace}}
 {
 	public class {{Entity}}Service : I{{Entity}}Service
 	{
+		private readonly I{{Entity}}Query _query;
+
+		private readonly I{{Entity}}Repository _repository;
+
+		public {{Entity}}Service(
+			I{{Entity}}Query query,
+			I{{Entity}}Repository repository
+		)
+		{
+			_query = query;
+			_repository = repository;
+		}
+
 		{{Implementations}}
 	}
 }

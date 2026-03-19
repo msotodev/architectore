@@ -1,26 +1,46 @@
-﻿using Architectore.Cli.Helpers;
+﻿using Architectore.Cli.Builders;
+using Architectore.Cli.Helpers;
+using Architectore.Cli.Models;
 using Architectore.Cli.Replacers;
 using EssentialLayers.Helpers.Extension;
+using EssentialLayers.Helpers.Result;
 
 namespace Architectore.Cli.Generators
 {
 	internal static class FileGenerator
 	{
-		public static async Task CreateAsync(string destinationPath, string templatePath, string entity, string nameSpace, string layer, string layerFolder)
+		public static async Task<Response> CreateAsync(
+			TemplateFile templateFile
+		)
 		{
-			if (Directory.Exists(destinationPath).False()) Directory.CreateDirectory(destinationPath);
+			try
+			{
+				if (Directory.Exists(templateFile.DestinationFilePath).False()) Directory.CreateDirectory(templateFile.DestinationFilePath);
 
-			string fileName = TemplateHelper.GetFileName(templatePath, entity, layerFolder);
+				string text = await File.ReadAllTextAsync(templateFile.TemplatePath);
 
-			Console.WriteLine($"Filename: {fileName}");
+				string[] contracts = templateFile.Contracts.Split(",");
+				string buildedContracts = await ContractBuilder.BuildAsync(contracts);
+				string implementations = await ImplementationBuilder.BuildAsync(contracts);
 
-			string path = Path.Combine(destinationPath, layer, layerFolder, fileName);
+				byte[] bytes = await TemplateReplacer.ReplaceAsync(
+					text, templateFile.Entity, templateFile.Namespace, buildedContracts, implementations
+				);
 
-			Console.WriteLine($"Path: {path}");
+				string fileName = $"{TemplateHelper.StartWith(templateFile.TemplatePath)}{templateFile.Entity}{templateFile.Type}.cs";
 
-			byte[] bytes = await TemplateReplacer.Replace(templatePath, entity, nameSpace);
+				string fullPath = Path.Combine(templateFile.DestinationFilePath, fileName);
 
-			await File.WriteAllBytesAsync(path, bytes);
+				await File.WriteAllBytesAsync(fullPath, bytes);
+
+				return Response.Success();
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine($"Exception {nameof(FileGenerator)}: {e.Message}");
+
+				return Response.Fail(e.Message);
+			}
 		}
 	}
 }

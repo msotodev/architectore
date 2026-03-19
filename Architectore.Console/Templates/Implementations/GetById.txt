@@ -1,0 +1,1 @@
+public async {{Entity}}? GetByIdAsync(int id) { }
