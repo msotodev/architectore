@@ -1,44 +1,44 @@
-\# 🚀 Architectore CLI
+# 🚀 Architectore CLI
 
 
 
-\*\*Architectore CLI\*\* is a .NET global tool designed to accelerate development using Clean Architecture principles.
+**Architectore CLI** is a .NET global tool designed to accelerate development using Clean Architecture principles.
 
 It helps you automatically generate repositories, services, and query structures based on your domain entities.
 
 
 
-\---
+---
 
 
 
-\## ✨ Features
+## ✨ Features
 
 
 
-\* 🔹 Generate Repository layer (interfaces + implementations)
+* 🔹 Generate Repository layer (interfaces + implementations)
 
-\* 🔹 Generate Application Services
+* 🔹 Generate Application Services
 
-\* 🔹 Generate Query layer (CQRS-ready structure)
+* 🔹 Generate Query layer (CQRS-ready structure)
 
-\* 🔹 CLI-based workflow with flexible flags
+* 🔹 CLI-based workflow with flexible flags
 
-\* 🔹 Designed for Clean Architecture projects
+* 🔹 Designed for Clean Architecture projects
 
-\* 🔹 Extensible and template-friendly
-
-
-
-\---
+* 🔹 Extensible and template-friendly
 
 
 
-\## 📦 Installation
+---
 
 
 
-\### Install globally (local package)
+## 📦 Installation
+
+
+
+### Install globally (local package)
 
 
 
@@ -50,75 +50,75 @@ dotnet tool install --global --add-source ./bin/Release Architectore.CleanArchit
 
 
 
-\---
+---
 
 
 
-\## 🚀 Usage
+## 🚀 Usage
 
 
 
-\### Basic command
-
-
-
-```bash
-
-arch g --path "<PROJECT\_PATH>" --namespace "<BASE\_NAMESPACE>" --entity "<ENTITY\_NAME>"
-
-```
-
-
-
-\---
-
-
-
-\### Examples
-
-
-
-\#### Generate everything (default behavior)
+### Basic command
 
 
 
 ```bash
 
-arch g --path "C:\\Repos\\MyApp" --namespace "MyApp" --entity "User"
+arch g --path "<PROJECT_PATH>" --namespace "<BASE_NAMESPACE>" --entity "<ENTITY_NAME>"
 
 ```
 
 
 
-\#### Generate only repositories
+---
+
+
+
+### Examples
+
+
+
+#### Generate everything (default behavior)
 
 
 
 ```bash
 
-arch g --path "C:\\Repos\\MyApp" --namespace "MyApp" --entity "User" --repo
+arch g --path "C:\Repos\MyApp" --namespace "MyApp" --entity "User"
 
 ```
 
 
 
-\#### Generate services and queries
+#### Generate only repositories
 
 
 
 ```bash
 
-arch g --path "C:\\Repos\\MyApp" --namespace "MyApp" --entity "User" --repo "New,Update" --service "New,Update" --query "GetAll,GetById"
+arch g --path "C:\Repos\MyApp" --namespace "MyApp" --entity "User" --repo
 
 ```
 
 
 
-\---
+#### Generate services and queries
 
 
 
-\## ⚙️ Options
+```bash
+
+arch g --path "C:\Repos\MyApp" --namespace "MyApp" --entity "User" --repo "New,Update" --service "New,Update" --query "GetAll,GetById"
+
+```
+
+
+
+---
+
+
+
+## ⚙️ Options
 
 
 
@@ -140,11 +140,11 @@ arch g --path "C:\\Repos\\MyApp" --namespace "MyApp" --entity "User" --repo "New
 
 
 
-\---
+---
 
 
 
-\## 📁 Output Structure
+## 📁 Output Structure
 
 
 
@@ -154,7 +154,7 @@ Generated files are placed in:
 
 ```
 
-<path>/
+<path>
 
 &#x20;├── Infrastructure/
 
@@ -170,11 +170,11 @@ Generated files are placed in:
 
 
 
-\---
+---
 
 
 
-\## 🧠 Architecture Philosophy
+## 🧠 Architecture Philosophy
 
 
 
@@ -182,23 +182,23 @@ This tool follows Clean Architecture principles:
 
 
 
-\* \*\*Domain\*\* → Entities and core business logic
+* **Domain** → Entities and core business logic
 
-\* \*\*Application\*\* → Services and use cases
+* **Application** → Services and use cases
 
-\* \*\*Infrastructure\*\* → Data access and persistence
-
-
-
-\---
+* **Infrastructure** → Data access and persistence
 
 
 
-\## 🔧 Development
+---
 
 
 
-\### Build the tool
+## 🔧 Development
+
+
+
+### Build the tool
 
 
 
@@ -210,7 +210,7 @@ dotnet build
 
 
 
-\### Pack the tool
+### Pack the tool
 
 
 
@@ -222,35 +222,35 @@ dotnet pack -c Release
 
 
 
-\---
+---
 
 
 
-\## 📌 Roadmap
+## 📌 Roadmap
 
 
 
-\* \[ ] Auto-detect entities from `Domain/Entities`
+* [ ] Auto-detect entities from `Domain/Entities`
 
-\* \[ x ] Support by entity (`User, Order, Product`)
+* [ x ] Support by entity (`User, Order, Product`)
 
-\* \[ ] Support multiple entities (`User, Order, Product`)
+* [ ] Support multiple entities (`User, Order, Product`)
 
-\* \[ x ] Template engine for custom code generation
+* [ x ] Template engine for custom code generation
 
-\* \[ ] Full CQRS support (Commands, Queries, Handlers)
+* [ ] Full CQRS support (Commands, Queries, Handlers)
 
-\* \[ ] Integration with MediatR
+* [ ] Integration with MediatR
 
-\* \[ ] Namespace auto-detection from `.csproj`
-
-
-
-\---
+* [ ] Namespace auto-detection from `.csproj`
 
 
 
-\## 🤝 Contributing
+---
+
+
+
+## 🤝 Contributing
 
 
 
@@ -258,19 +258,19 @@ Contributions are welcome!
 
 
 
-1\. Fork the repository
+1. Fork the repository
 
-2\. Create a feature branch
+2. Create a feature branch
 
-3\. Submit a pull request
-
-
-
-\---
+3. Submit a pull request
 
 
 
-\## 📄 License
+---
+
+
+
+## 📄 License
 
 
 
@@ -278,11 +278,11 @@ MIT License
 
 
 
-\---
+---
 
 
 
-\## 👨‍💻 Author
+## 👨‍💻 Author
 
 
 
