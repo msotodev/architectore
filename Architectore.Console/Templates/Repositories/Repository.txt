@@ -1,0 +1,7 @@
+namespace {{Namespace}}
+{
+	public class {{Entity}}Repository : I{{Entity}}Repository
+	{
+		{{Implementations}}
+	}
+}

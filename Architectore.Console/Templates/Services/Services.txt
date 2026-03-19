@@ -1,0 +1,7 @@
+namespace {{Namespace}}
+{
+	public class {{Entity}}Service : I{{Entity}}Service
+	{
+		{{Implementations}}
+	}
+}

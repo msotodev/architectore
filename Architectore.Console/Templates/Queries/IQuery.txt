@@ -1,0 +1,7 @@
+namespace {{Namespace}}
+{
+	public interface I{{Entity}}Querie
+	{
+		{{Contracts}}
+	}
+}
