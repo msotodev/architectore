@@ -8,11 +8,11 @@ using static Architectore.Cli.Constants.TypeConstant;
 
 namespace Architectore.Cli.Builders
 {
-	internal static class RepositoryBuilder
+	public static class RepositoryBuilder
 	{
 		private const string LAYER_FOLDER = "Repositories";
 
-		internal static Task<Response> BuildAsync(string projectPath, string entity, string contracts)
+		public static Task<Response> BuildAsync(string projectPath, string entity, string contracts)
 		{
 			string[] templatePaths = TemplateHelper.GetTemplates(LAYER_FOLDER);
 

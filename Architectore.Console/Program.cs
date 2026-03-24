@@ -36,7 +36,7 @@ namespace Architectore.Cli
 			command.AddOption(serviceOption);
 			command.AddOption(queryOption);
 
-			command.SetHandler(async (string path, string nameSpace, string entity, string repo, string service, string query) =>
+			command.SetHandler(async (path, nameSpace, entity, repo, service, query) =>
 			{
 				Console.WriteLine($"🚀 Generating to {entity}...");
 
