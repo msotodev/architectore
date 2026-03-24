@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="Architectore.Console/Architectore.Cli.csproj" />
+  <Project Path="Architectore.Mcp/Architectore.Mcp.csproj" Id="712ada77-31f2-41e0-9a90-83e638aa3a77" />
 </Solution>
